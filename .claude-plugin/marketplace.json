@@ -1,0 +1,14 @@
+{
+  "name": "xipfax-plugins",
+  "owner": {
+    "name": "XipFax"
+  },
+  "description": "XipFax's plugin: its MCP server and the Fax a form skill.",
+  "plugins": [
+    {
+      "name": "xipfax",
+      "source": "./plugins/xipfax",
+      "description": "Find the fax number of the IRS office that takes a form or a notice, get a fax's price, and send the fax with XipFax."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "xipfax": {
+      "type": "http",
+      "url": "https://mcp.xipfax.com/mcp"
+    }
+  }
+}
