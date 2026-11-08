@@ -55,4 +55,4 @@ Then start a new session, and connect XipFax when Codex asks. Ask Codex to fax a
 
 ## Help
 
-Write to support@xipfax.com.
+Write to help@xipfax.com.
