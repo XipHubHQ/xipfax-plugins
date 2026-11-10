@@ -50,9 +50,9 @@ Then start a new session, and connect XipFax when Codex asks. Ask Codex to fax a
 
 ## Privacy and terms
 
-- [XipFax's privacy policy](https://xipfax.com/privacy/)
-- [XipFax's terms](https://xipfax.com/terms/)
+- [XipFax's privacy policy](https://xipfax.com/legal/privacy)
+- [XipFax's terms](https://xipfax.com/legal/terms)
 
 ## Help
 
-Write to help@xipfax.com.
+Write to XipFax from its [Contact page](https://xipfax.com/contact).
