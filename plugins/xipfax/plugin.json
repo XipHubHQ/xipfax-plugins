@@ -64,13 +64,13 @@
             },
             {
               "description": "Send the draft",
-              "prompt": "Fax the pages on my draft to <XipFax's test line>.",
+              "prompt": "Fax the pages on my draft to <the reviewer account's own number>.",
               "tools_triggered": "send_fax",
               "expected_behavior": "Asks before sending; answers with a link where the fax waits to be looked over and sent, since the account shows faxes first; says the fax hasn't gone yet."
             },
             {
               "description": "How a fax went, and its confirmation",
-              "prompt": "How did fax <the delivered sample fax's id> go? If it was delivered, get me its confirmation.",
+              "prompt": "How did fax <its delivered sample fax's id> go? If it was delivered, get me its confirmation.",
               "tools_triggered": "get_fax, get_fax_confirmation",
               "expected_behavior": "Says the fax was delivered, to whom, with its pages and when. It then gives a link to its one-page confirmation, a PDF that opens for a few minutes."
             }
