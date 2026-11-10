@@ -1,14 +1,14 @@
 # XipFax plugins
 
-XipFax's plugin for Claude Code and for Codex. It connects your assistant to XipFax's MCP server,
-at `https://mcp.xipfax.com/mcp`, and adds the Fax a form skill.
+Fax any document to any fax number from Claude Code or Codex. XipFax's plugin connects your
+assistant to XipFax's MCP server, at `https://mcp.xipfax.com/mcp`, and adds the Send a fax skill.
 
 With the plugin, your assistant can:
 
-- find the fax number of the IRS office that takes a form or a notice;
 - give the price of a fax;
 - give you a link to XipFax's send screen with the number filled in, where you add your pages,
-  sign in and pay.
+  sign in and pay;
+- find the fax number of the IRS office that takes a form or a notice.
 
 Once you sign in to XipFax, it can also:
 
@@ -36,7 +36,7 @@ claude plugin install xipfax@xipfax-plugins
 ```
 
 To sign in to XipFax, run `/mcp`, choose `plugin:xipfax:xipfax`, and sign in in your browser.
-Then ask your assistant to fax a form, or run `/xipfax:fax-a-form`.
+Then ask your assistant to fax a document, or run `/xipfax:send-a-fax`.
 
 ## Codex
 
@@ -45,8 +45,8 @@ codex plugin marketplace add XipHubHQ/xipfax-plugins
 codex plugin add xipfax@xipfax-plugins
 ```
 
-Then start a new session, and connect XipFax when Codex asks. Ask Codex to fax a form, or pick
-`fax-a-form` in `/skills`.
+Then start a new session, and connect XipFax when Codex asks. Ask Codex to fax a document, or pick
+`send-a-fax` in `/skills`.
 
 ## Privacy and terms
 

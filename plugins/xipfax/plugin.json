@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "xipfax",
   "version": "1.0.0",
-  "description": "Find the fax number of the IRS office that takes a form or a notice, get a fax's price, and send the fax with XipFax.",
+  "description": "Fax any document to any fax number with XipFax: add your pages, get the fax's price, send it, and get its confirmation. It also finds IRS offices' fax numbers.",
   "author": {
     "name": "XipHub",
     "url": "https://xiphub.com"
@@ -15,25 +15,25 @@
     "com.openai": {
       "interface": {
         "displayName": "XipFax",
-        "shortDescription": "Fax a form to the right office",
-        "longDescription": "Fax a form or a letter from your chat, with no fax machine.\n\nXipFax finds the fax number of the IRS office that takes a form or a notice, such as Form 2848, Form SS-4 or a CP2000, from a list read from the IRS's own pages, and asks where you live when the number depends on it. It tells you when an office wants a form signed by hand, in ink.\n\nOnce you sign in to your XipFax account, it puts your pages on a fax: a PDF at a public link, a PDF or a photo on your computer in Codex, or pages you add from your phone or browser on a one-time page it gives you. It sends the fax to the office it found, or to a fax number you give it. Then it tells you how the fax went, and gives you a delivered fax's confirmation: one page that says who received how many pages, and when.\n\nWho it's for: anyone who has to fax a form to a government office, or has pages to fax and no fax machine.\n\nLimits: XipFax faxes numbers in the United States, its territories and Canada. It doesn't fill in forms, so fill in and sign your form first. Each fax waits on XipFax for you to check and send it, unless your XipFax account is set to send straight away.",
+        "shortDescription": "Fax any document to any number",
+        "longDescription": "Fax any document to any fax number from your chat, with no fax machine.\n\nSend a signed lease to a landlord, a claim to an insurer, a form to a school, or papers to a lender or a court. Once you sign in to your XipFax account, XipFax puts your pages on a fax: a PDF at a public link, a PDF or a photo on your computer in Codex, or pages you add from your phone or browser on a one-time page it gives you. It sends the fax to the number you give it. Then it tells you how the fax went, and gives you a delivered fax's confirmation: one page that says who received how many pages, and when.\n\nFaxing the IRS? XipFax finds the fax number of the IRS office that takes a form or a notice, such as Form 2848 or a CP2000, and asks where you live when the number depends on it. It tells you when an office wants a form signed by hand, in ink, and sends your fax to the office it found.\n\nWho it's for: anyone with pages to fax and no fax machine.\n\nLimits: XipFax faxes numbers in the United States, its territories and Canada. It doesn't fill in forms, so fill in and sign your form first. Each fax waits on XipFax for you to check and send it, unless your XipFax account is set to send straight away.",
         "developerName": "Bryllyant",
         "category": "Productivity",
         "capabilities": [
-          "Find IRS fax numbers",
-          "Add pages to a fax",
           "Send a fax",
+          "Add pages to a fax",
           "Check how a fax went",
-          "Get a fax's confirmation"
+          "Get a fax's confirmation",
+          "Find IRS fax numbers"
         ],
         "websiteURL": "https://xipfax.com",
         "supportURL": "https://xipfax.com/contact",
         "privacyPolicyURL": "https://xipfax.com/legal/privacy",
         "termsOfServiceURL": "https://xipfax.com/legal/terms",
         "defaultPrompt": [
-          "Where do I fax Form 2848? I live in Ohio.",
-          "Fax my reply to a CP2000 notice to the IRS.",
-          "Add pages from my phone to a fax."
+          "Fax my signed lease to my landlord.",
+          "Add pages from my phone to a fax.",
+          "Where do I fax Form 2848? I live in Ohio."
         ],
         "brandColor": "#A655B8",
         "brandColorDark": "#D695E4",
@@ -44,16 +44,10 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Find where a form goes",
-              "prompt": "Where do I fax Form 2848? I live in Ohio.",
-              "tools_triggered": "find_fax_number",
-              "expected_behavior": "Names the Memphis CAF unit and its number, +1 855-214-7519, and says the IRS takes Form 2848 there only signed by hand, in ink. Nothing is added or sent."
-            },
-            {
-              "description": "A PDF from a link",
-              "prompt": "Put the PDF at https://xipfax.com/files/sample-fax.pdf on my XipFax fax.",
-              "tools_triggered": "add_fax_file_from_url",
-              "expected_behavior": "XipFax fetches the PDF and adds it to the account's draft. The answer says it's ready, with its page count."
+              "description": "Fax a document to a number",
+              "prompt": "Fax the PDF at https://xipfax.com/files/sample-fax.pdf to <the reviewer account's own number>.",
+              "tools_triggered": "add_fax_file_from_url, send_fax",
+              "expected_behavior": "XipFax fetches the PDF and adds it to the account's draft, and the answer gives its page count; asks before sending; answers with a link where the fax waits to be looked over and sent; says the fax hasn't gone yet."
             },
             {
               "description": "Pages from a phone",
@@ -66,20 +60,26 @@
               "description": "Send the draft",
               "prompt": "Fax the pages on my draft to <the reviewer account's own number>.",
               "tools_triggered": "send_fax",
-              "expected_behavior": "Asks before sending; answers with a link where the fax waits to be looked over and sent, since the account shows faxes first; says the fax hasn't gone yet."
+              "expected_behavior": "Asks before sending; answers with a link where the fax waits to be looked over and sent; says the fax hasn't gone yet."
             },
             {
               "description": "How a fax went, and its confirmation",
               "prompt": "How did fax <its delivered sample fax's id> go? If it was delivered, get me its confirmation.",
               "tools_triggered": "get_fax, get_fax_confirmation",
               "expected_behavior": "Says the fax was delivered, to whom, with its pages and when. It then gives a link to its one-page confirmation, a PDF that opens for a few minutes."
+            },
+            {
+              "description": "Find the IRS office for a form",
+              "prompt": "Where do I fax Form 2848? I live in Ohio.",
+              "tools_triggered": "find_fax_number",
+              "expected_behavior": "Names the Memphis CAF unit and its number, +1 855-214-7519, and says the IRS takes Form 2848 there only signed by hand, in ink. Nothing is added or sent."
             }
           ],
           "negative": [
             {
-              "description": "No one number to give: each Social Security office has its own fax number, and XipFax's list doesn't hold them, so it mustn't guess one.",
-              "prompt": "Fax my form to Social Security.",
-              "expected_behavior": "find_fax_number answers that no office on its list takes it, and points to Social Security's office locator, which gives the number by ZIP code; nothing is sent; once the person has the number, send_fax_link or send_fax take it."
+              "description": "No number given: it gives no fax number, and XipFax mustn't guess one.",
+              "prompt": "Fax my signed lease to my landlord.",
+              "expected_behavior": "It asks for the landlord's fax number, and may ask for the lease too. Nothing is sent."
             },
             {
               "description": "Outside where XipFax faxes: XipFax faxes numbers in the United States, its territories and Canada.",

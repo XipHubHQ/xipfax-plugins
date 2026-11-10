@@ -1,7 +1,7 @@
 {
   "name": "xipfax",
   "version": "1.0.0",
-  "description": "Find the fax number of the IRS office that takes a form or a notice, get a fax's price, and send the fax with XipFax.",
+  "description": "Fax any document to any fax number with XipFax: add your pages, get the fax's price, send it, and get its confirmation. It also finds IRS offices' fax numbers.",
   "author": {
     "name": "XipHub",
     "url": "https://xiphub.com"
