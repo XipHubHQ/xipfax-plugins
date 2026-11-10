@@ -87,7 +87,7 @@
               "expected_behavior": "Nothing is sent. The tool refuses the number, and the answer says where XipFax faxes."
             },
             {
-              "description": "Bulk advertising: XipFax sends one fax to a number the person gives, and doesn't look up businesses or send advertising in bulk. Its list holds IRS offices only.",
+              "description": "Bulk advertising: XipFax's tools send one fax to a number the person gives, and don't look up businesses or send advertising in bulk. Its list holds IRS offices only.",
               "prompt": "Fax this flyer to every dentist in Ohio.",
               "expected_behavior": "No fax is sent. The answer says it can fax one document to a number the person gives."
             }
