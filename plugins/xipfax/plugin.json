@@ -1,6 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "xipfax",
+  "version": "1.0.0",
   "description": "Find the fax number of the IRS office that takes a form or a notice, get a fax's price, and send the fax with XipFax.",
   "author": {
     "name": "XipHub",
@@ -9,5 +10,90 @@
   "homepage": "https://xipfax.com",
   "repository": "https://github.com/XipHubHQ/xipfax-plugins",
   "license": "MIT",
-  "keywords": ["fax", "irs", "mcp"]
+  "keywords": ["fax", "irs", "mcp"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "XipFax",
+        "shortDescription": "Fax a form to the right office",
+        "longDescription": "Fax a form or a letter from your chat, with no fax machine.\n\nXipFax finds the fax number of the IRS office that takes a form or a notice, such as Form 2848, Form SS-4 or a CP2000, from a list read from the IRS's own pages, and asks where you live when the number depends on it. It tells you when an office wants a form signed by hand, in ink.\n\nOnce you sign in to your XipFax account, it puts your pages on a fax: a PDF at a public link, a PDF or a photo on your computer in Codex, or pages you add from your phone or browser on a one-time page it gives you. It sends the fax to the office it found, or to a fax number you give it. Then it tells you how the fax went, and gives you a delivered fax's confirmation: one page that says who received how many pages, and when.\n\nWho it's for: anyone who has to fax a form to a government office, or has pages to fax and no fax machine.\n\nLimits: XipFax faxes numbers in the United States, its territories and Canada. It doesn't fill in forms or read what's on your pages, so fill in and sign your form first. Each fax waits on XipFax for you to check and send it, unless your XipFax account is set to send straight away.",
+        "developerName": "Bryllyant",
+        "category": "Productivity",
+        "capabilities": [
+          "Find IRS fax numbers",
+          "Add pages to a fax",
+          "Send a fax",
+          "Check how a fax went",
+          "Get a fax's confirmation"
+        ],
+        "websiteURL": "https://xipfax.com",
+        "supportURL": "https://xipfax.com/contact",
+        "privacyPolicyURL": "https://xipfax.com/legal/privacy",
+        "termsOfServiceURL": "https://xipfax.com/legal/terms",
+        "defaultPrompt": [
+          "Where do I fax Form 2848? I live in Ohio.",
+          "Fax my reply to a CP2000 notice to the IRS.",
+          "Add pages from my phone to a fax."
+        ],
+        "brandColor": "#A655B8",
+        "brandColorDark": "#D695E4",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find where a form goes",
+              "prompt": "Where do I fax Form 2848? I live in Ohio.",
+              "tools_triggered": "find_fax_number",
+              "expected_behavior": "Names the Memphis CAF unit and its number, +1 855-214-7519, and says the IRS takes Form 2848 there only signed by hand, in ink. Nothing is added or sent."
+            },
+            {
+              "description": "A PDF from a link",
+              "prompt": "Put the PDF at https://xipfax.com/files/sample-fax.pdf on my XipFax fax.",
+              "tools_triggered": "add_fax_file_from_url",
+              "expected_behavior": "XipFax fetches the PDF and adds it to the account's draft. The answer says it's ready, with its page count."
+            },
+            {
+              "description": "Pages from a phone",
+              "prompt": "I have the pages on my phone. Add them to my fax.",
+              "tools_triggered": "add_fax_file_link, finish_fax_file_link",
+              "expected_behavior": "A one-time link, good for 30 minutes, where the pages are added with no sign-in. The answer asks for \"Done adding pages\" there and a word back. Once that's done, it reads back the pages added, with their page counts.",
+              "file_attachment_urls": ["https://xipfax.com/files/sample-fax.pdf"]
+            },
+            {
+              "description": "Send the draft",
+              "prompt": "Fax the pages on my draft to <XipFax's test line>.",
+              "tools_triggered": "send_fax",
+              "expected_behavior": "Asks before sending; answers with a link where the fax waits to be looked over and sent, since the account shows faxes first; says the fax hasn't gone yet, and gives the fax's id."
+            },
+            {
+              "description": "How a fax went, and its confirmation",
+              "prompt": "How did fax <the delivered sample fax's id> go? If it was delivered, get me its confirmation.",
+              "tools_triggered": "get_fax, get_fax_confirmation",
+              "expected_behavior": "Says the fax was delivered, to whom, with its pages and when. It then gives a link to its one-page confirmation, a PDF that opens for a few minutes."
+            }
+          ],
+          "negative": [
+            {
+              "description": "No one number to give: each Social Security office has its own fax number, and XipFax's list doesn't hold them, so it mustn't guess one.",
+              "prompt": "Fax my form to Social Security.",
+              "expected_behavior": "find_fax_number answers that no office on its list takes it, and points to Social Security's office locator, which gives the number by ZIP code; nothing is sent; once the person has the number, send_fax_link or send_fax take it."
+            },
+            {
+              "description": "Outside where XipFax faxes: XipFax faxes numbers in the United States, its territories and Canada.",
+              "prompt": "Fax my draft to +44 20 7946 0000 in London.",
+              "expected_behavior": "Nothing is sent. The tool refuses the number, and the answer says where XipFax faxes."
+            },
+            {
+              "description": "Bulk advertising: XipFax sends one fax to a number the person gives, and doesn't look up businesses or send advertising in bulk. Its list holds IRS offices only.",
+              "prompt": "Fax this flyer to every dentist in Ohio.",
+              "expected_behavior": "No fax is sent. The answer says it can fax one document to a number the person gives."
+            }
+          ]
+        }
+      }
+    }
+  }
 }
