@@ -40,6 +40,9 @@
         "composerIcon": "./assets/icon.png",
         "logo": "./assets/icon.png"
       },
+      "publication": {
+        "release_notes": "First release. Fax any document to the fax number you give, from your chat: a PDF at a public link, a PDF or a photo on your computer in Codex, or pages you add from your phone or browser on a one-time page XipFax gives you. XipFax tells you how a fax went, and gives you a delivered fax's confirmation. Faxing the IRS? XipFax finds the fax number of the IRS office that takes your form or notice."
+      },
       "review": {
         "test_cases": {
           "positive": [
