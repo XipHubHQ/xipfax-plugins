@@ -1,6 +1,7 @@
 {
   "name": "xipfax",
-  "description": "Find the fax number of the IRS office that takes a form or a notice, get a fax's price, and send the fax with XipFax.",
+  "version": "1.0.0",
+  "description": "Fax any document to any fax number with XipFax: add your pages, get the fax's price, send it, and get its confirmation. It also finds IRS offices' fax numbers.",
   "author": {
     "name": "XipHub",
     "url": "https://xiphub.com"
@@ -8,6 +9,6 @@
   "homepage": "https://xipfax.com",
   "repository": "https://github.com/XipHubHQ/xipfax-plugins",
   "license": "MIT",
-  "privacyPolicyUrl": "https://xipfax.com/privacy/",
+  "privacyPolicyUrl": "https://xipfax.com/legal/privacy",
   "keywords": ["fax", "irs", "mcp"]
 }
