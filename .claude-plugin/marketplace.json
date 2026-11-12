@@ -1,7 +1,7 @@
 {
   "name": "xipfax-plugins",
   "owner": {
-    "name": "XipFax"
+    "name": "XipHub"
   },
   "description": "XipFax's plugin: its MCP server and the Fax a form skill.",
   "plugins": [
