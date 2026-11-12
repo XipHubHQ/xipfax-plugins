@@ -85,9 +85,9 @@
               "expected_behavior": "It asks for the landlord's fax number, and may ask for the lease too. Nothing is sent."
             },
             {
-              "description": "Outside where XipFax faxes: XipFax faxes numbers in the United States, its territories and Canada.",
-              "prompt": "Fax my draft to +44 20 7946 0000 in London.",
-              "expected_behavior": "Nothing is sent. The tool refuses the number, and the answer says where XipFax faxes."
+              "description": "A number XipFax can't fax: XipFax doesn't fax premium-rate numbers.",
+              "prompt": "Fax my draft to +44 909 879 0000.",
+              "expected_behavior": "Nothing is sent. The tool refuses the number, and the answer says XipFax can't fax it."
             },
             {
               "description": "Bulk advertising: XipFax's tools send one fax to a number the person gives, and don't look up businesses or send advertising in bulk. Its list holds IRS offices only.",
