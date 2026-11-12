@@ -2,8 +2,8 @@
   "name": "xipfax",
   "description": "Find the fax number of the IRS office that takes a form or a notice, get a fax's price, and send the fax with XipFax.",
   "author": {
-    "name": "XipFax",
-    "url": "https://xipfax.com"
+    "name": "XipHub",
+    "url": "https://xiphub.com"
   },
   "homepage": "https://xipfax.com",
   "repository": "https://github.com/XipHubHQ/xipfax-plugins",
