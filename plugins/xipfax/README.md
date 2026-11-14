@@ -17,6 +17,6 @@ Without a XipFax plan, you get a link where you look the fax over, send it and p
 
 ## Privacy, terms and help
 
-- [Privacy policy](https://xipfax.com/legal/privacy)
-- [Terms](https://xipfax.com/legal/terms)
-- [Contact us](https://xipfax.com/contact)
+- [Privacy policy](https://xipfax.com/legal/privacy?utm_source=claude-plugins&utm_medium=referral&utm_campaign=claude-code)
+- [Terms](https://xipfax.com/legal/terms?utm_source=claude-plugins&utm_medium=referral&utm_campaign=claude-code)
+- [Contact us](https://xipfax.com/contact?utm_source=claude-plugins&utm_medium=referral&utm_campaign=claude-code)

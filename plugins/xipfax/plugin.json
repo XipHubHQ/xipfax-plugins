@@ -26,10 +26,10 @@
           "Get a fax's confirmation",
           "Find IRS fax numbers"
         ],
-        "websiteURL": "https://xipfax.com",
-        "supportURL": "https://xipfax.com/contact",
-        "privacyPolicyURL": "https://xipfax.com/legal/privacy",
-        "termsOfServiceURL": "https://xipfax.com/legal/terms",
+        "websiteURL": "https://xipfax.com/?utm_source=chatgpt-apps&utm_medium=referral&utm_campaign=chatgpt",
+        "supportURL": "https://xipfax.com/contact?utm_source=chatgpt-apps&utm_medium=referral&utm_campaign=chatgpt",
+        "privacyPolicyURL": "https://xipfax.com/legal/privacy?utm_source=chatgpt-apps&utm_medium=referral&utm_campaign=chatgpt",
+        "termsOfServiceURL": "https://xipfax.com/legal/terms?utm_source=chatgpt-apps&utm_medium=referral&utm_campaign=chatgpt",
         "defaultPrompt": [
           "Fax my signed lease to my landlord.",
           "Add pages from my phone to a fax.",
