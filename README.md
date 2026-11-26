@@ -14,9 +14,7 @@ Once you sign in to XipFax, it can also:
 
 - put your pages on a draft: a file on your computer, a PDF at a public link, or pages you add
   yourself on a page it gives you a link to;
-- send the draft. It goes at once if you have a plan and chose Send straight away when you
-  connected your assistant, or since. Otherwise you get a link where you look the fax over and
-  send it, and pay there if you have no plan;
+- send the draft;
 - say how a fax went, and give a delivered fax's confirmation.
 
 ## Claude Code

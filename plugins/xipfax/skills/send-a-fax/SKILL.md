@@ -29,9 +29,11 @@ for the number: XipFax's list holds IRS offices alone.
 
 ## 2. Give the price
 
-Once you know how many pages the fax has, call `quote_fax` with that number. Each document the
+Once you know how many pages the fax has, call `quote_fax` with that number and the `fax_number`.
+Each document the
 file tools put on a draft comes back with its pages. `quote_fax` gives the price of a fax without
-a plan. A fax sent on a XipFax plan counts its pages on the plan instead. Tell the person the
+a plan. A fax sent on a XipFax plan counts its pages on the plan instead, where `plan_covers` is
+true. Tell the person the
 number, the office where there is one, and the price, and send nothing until they say to send it.
 
 ## 3. Send it
@@ -59,7 +61,7 @@ you added them. Its `result` tells you what happened:
 
 - `sent`: the fax is on its way. Keep `fax.id`, which `get_fax` reads.
 - `waiting`: nothing has been sent. Give the person the `url`: they look the fax over there and
-  send it, and pay there if they have no plan.
+  send it.
 - `add_pages` or `look_over`: give the person the `url`, where they add their pages or check them.
 
 Tell the person a fax went only when `result` is `sent`. If `send_fax` fails because XipFax didn't
